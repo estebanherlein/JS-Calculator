@@ -10,7 +10,7 @@ class AdditionTest(unittest.TestCase):
 	def test_additionOfPositiveNumbers(self):
 		options = Options()
 		options.add_experimental_option("excludeSwitches", ["enable-logging"])
-		print("testing started")
+		print("Test additionOfPositiveNumbers started")
 		driver = webdriver.Chrome(options=options)
 		driver.get("http://127.0.0.1/testMe")
 		sleep(1)
@@ -21,6 +21,10 @@ class AdditionTest(unittest.TestCase):
 		driver.find_element(By.ID, "number-2").click()
 		driver.find_element(By.ID, "equals").click()
 		result = driver.find_element(By.ID, "screen")
+		if result.get_attribute('value') == '3':
+			print("Test passed")
+		else:
+			print("Test failed")
 		self.assertEqual(result.get_attribute('value'), '3')
 
 if __name__ == '__main__':
