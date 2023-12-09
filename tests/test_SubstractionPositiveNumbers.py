@@ -10,7 +10,7 @@ class SubstractionTest(unittest.TestCase):
 	def test_substractionOfPositiveNumbers(self):
 		options = Options()
 		options.add_experimental_option("excludeSwitches", ["enable-logging"])
-		print("testing started")
+		print("Test substractionOfPositiveNumbers started")
 		driver = webdriver.Chrome(options=options)
 		driver.get("http://127.0.0.1/testMe")
 		sleep(1)
@@ -21,6 +21,10 @@ class SubstractionTest(unittest.TestCase):
 		driver.find_element(By.ID, "number-1").click()
 		driver.find_element(By.ID, "equals").click()
 		result = driver.find_element(By.ID, "screen")
+		if result.get_attribute('value') == '2':
+			print("Test passed")
+		else:
+			print("Test failed")
 		self.assertEqual(result.get_attribute('value'), '2')
 
 if __name__ == '__main__':
